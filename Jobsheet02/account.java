@@ -32,4 +32,13 @@ public class account {
     public boolean isOverdrawn(){
         return balance < 0;
     }
+
+    public void transferTo(account target, double amount) {
+        double initialBalance = this.balance;
+        this.withdraw(amount);
+        
+        if (this.balance < initialBalance) {
+            target.deposit(amount);
+        }
+    }
 }
