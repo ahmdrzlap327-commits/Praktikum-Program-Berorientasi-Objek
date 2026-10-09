@@ -12,7 +12,14 @@ public class BusinessAccount extends Account {
         return monthlyTransactionFee;
     }
 
-    public void printAccountType(){
+    @Override
+    protected boolean canWithdraw(double amount) {
+        return amount > 0 && (getBalance() - amount) >= 1000000;
+    }
+
+    @Override
+    public void printInfo() {
+        super.printInfo();
         System.out.println("Account type: Business, monthly fee: " + monthlyTransactionFee);
     }
 }
