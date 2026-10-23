@@ -1,6 +1,6 @@
 package Jobsheet09;
 
-public class CheckingAccount extends Account {
+public class CheckingAccount extends Account implements Auditable {
     private double overdraftLimit;
     private static final double MONTHLY_FEE = 15000;
 
@@ -27,5 +27,10 @@ public class CheckingAccount extends Account {
     @Override
     public double monthlyFee() {
         return MONTHLY_FEE;
+    }
+
+    @Override
+    public String auditLog() {
+        return "Audit Log - Account: " + getAccountNumber() + ", Balance: " + getBalance();
     }
 }
