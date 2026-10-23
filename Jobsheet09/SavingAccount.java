@@ -1,6 +1,6 @@
 package Jobsheet09;
 
-public class SavingAccount extends Account {
+public class SavingAccount extends Account implements InterestBearing {
     private static final double MINIMUM_BALANCE = 50000;
     private double interestRate;
 
@@ -27,5 +27,11 @@ public class SavingAccount extends Account {
     @Override
     public double monthlyFee() {
         return 0;
+    }
+
+    @Override
+    public void applyInterest() {
+        double interest = getBalance() * interestRate;
+        deposit(interest);
     }
 }
